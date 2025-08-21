@@ -2,38 +2,49 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println("Oyuna xos geldin! Baslamaga hazirsan? ");
-        System.out.println("Adini daxil et: ");
         Scanner sc = new Scanner(System.in);
+
+        System.out.println("Oyuna xoş gəldin! Başlamağa hazırsan?");
+        System.out.print("Adını daxil et: ");
         String name = sc.nextLine();
 
-        String doyuscu;
-        int secim;
+        String doyuscu = "";
         boolean dogruSecim = false;
 
         do {
-            System.out.println("sen hansi doyuscusen? 3-den 1-i sec! \n 1. Samuray \n 2. Cengaver \n 3. Oxatan ");
-            secim = sc.nextInt();
-            if (secim != 1 || secim != 2 || secim != 3) {
-                dogruSecim = true;
+            try {
+                System.out.println("Sən hansı döyüşçüsən? 3-dən 1-ni seç!");
+                System.out.println("1. Samuray");
+                System.out.println("2. Cəngavər");
+                System.out.println("3. Oxatan");
+                System.out.print("Seçiminizi daxil edin (1-3): ");
 
+                int secim = sc.nextInt();
+                sc.nextLine(); // Bufeti təmizləmək üçün
 
                 switch (secim) {
                     case 1:
                         doyuscu = "Samuray";
-                        System.out.println("Siz " + doyuscu + "secdiniz! yaxin doyusde tesirlidir");
+                        System.out.println("Siz " + doyuscu + " seçdiniz! Yaxın döyüşdə çox təsirlidir.");
+                        dogruSecim = true;
                         break;
                     case 2:
-                        doyuscu = "Cengaver";
-                        System.out.println("Siz " + doyuscu + "secdiniz! Uzaqdan mohtesem hucum edir!");
+                        doyuscu = "Cəngavər";
+                        System.out.println("Siz " + doyuscu + " seçdiniz! Uzaqdan möhtəşəm hücum edir!");
+                        dogruSecim = true;
                         break;
                     case 3:
                         doyuscu = "Oxatan";
+                        System.out.println("Siz " + doyuscu + " seçdiniz! Səssiz və ölümcül hücum edir!");
+                        dogruSecim = true;
+                        break;
+                    default:
+                        System.out.println("Xəta: Yalnız 1, 2 və ya 3 daxil edin!");
                         break;
                 }
-            } else {
-                System.out.println("sadece 3 eded seciminiz var!");
+            } catch (Exception e) {
+                System.out.println("Xəta: Yalnız rəqəm daxil edin!");
+                sc.nextLine(); // Bufeti təmizləmək üçün
             }
         } while (!dogruSecim);
 
