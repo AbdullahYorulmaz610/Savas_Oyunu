@@ -48,6 +48,39 @@ public class Main {
             }
         } while (!dogruSecim);
 
+
+        Player player = new Player(name, doyuscu);
+        player.showInfo();
+        Monster zombie = new Monster("Zombie", 50, 5);
+
+        System.out.println("Mohtesem doyus baslayir!");
+        while (player.getHealth() > 0 && zombie.getHealth()>0){
+            System.out.println("eger savasmaq isteyirsense 1 istemirsense 2 secerek qac!");
+            int secim = sc.nextInt();
+            if(secim==1){
+            zombie.setHealth(zombie.getHealth() - player.getDamage());
+            System.out.println("Oyuncu canavara dehsetli zerbe vurdu!! " + zombie.getHealth());
+
+            if (zombie.getHealth()<=0){
+                System.out.println("Canavar rehmetlik oldu!");
+                break;
+            }
+
+            player.setHealth(player.getHealth()- zombie.getDamage());
+            System.out.println("Canavar oyuncuya zerbe vurdu, ehtiyatli olmalisan: " + player.getHealth());
+            if (player.getHealth()<=0){
+                System.out.println("rehmetlik oldun! oyun bitdi!");
+            }
+        } else if (secim==2) {
+                System.out.println("qacmaga qerar verdin. igidlik 10du 9u qacmaqdir!");
+                break;
+            }
+            else {
+                System.out.println("yanlis secim etdin");
+            }
+
+            }
         sc.close();
-    }
+
+        }
 }
